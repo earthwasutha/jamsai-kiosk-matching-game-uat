@@ -58,7 +58,9 @@ instance.interceptors.response.use(
       (error?.response?.status === 401 || error.message === "Network Error")
     ) {
       localStorage.removeItem("access_token");
-      window.location.href = "/";
+      if (typeof window !== "undefined") {
+        window.location.href = "/";
+      }
       return;
     }
     return Promise.reject(error);
