@@ -1,0 +1,10 @@
+node_modules
+.DS_Store
+.next/
+# .*.env
+# .env
+public/sw.js.map
+public/sw.js
+public/sw.js
+public/sw.js.map
+public/workbox-e43f5367.js
