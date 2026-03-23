@@ -1,11 +1,13 @@
 "use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import Lottie from "react-lottie";
+import dynamic from "next/dynamic";
 import animationData from "@/app/lottie/logo.json";
 import Countdown from "@/app/components/Countdown";
 import { getGamePattern } from "@/app/services/bookFairService";
 import { useBoundStore } from "@/app/stores/useBoundStore";
+
+const Lottie = dynamic(() => import("react-lottie"), { ssr: false });
 export default function ReadyToPlay() {
   const router = useRouter();
   const [showCountdown, setShowCountdown] = useState<boolean>(false);

@@ -1,7 +1,9 @@
 "use client";
 import React from "react";
-import Lottie from "react-lottie";
+import dynamic from "next/dynamic";
 import animationData from "@/app/lottie/get_reward.json";
+
+const Lottie = dynamic(() => import("react-lottie"), { ssr: false });
 type Props = { children: React.ReactNode };
 
 function layout({ children }: Props) {

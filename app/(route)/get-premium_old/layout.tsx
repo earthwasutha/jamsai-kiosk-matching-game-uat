@@ -3,7 +3,10 @@ import React from "react";
 import animationData from "@/app/lottie/get_premium.json";
 import animationWordData from "@/app/lottie/premium_word.json";
 import animationEffectData from "@/app/lottie/premium_effect.json";
-import Lottie from "react-lottie";
+import dynamic from "next/dynamic";
+
+const Lottie = dynamic(() => import("react-lottie"), { ssr: false });
+
 type Props = { children: React.ReactNode };
 
 function layout({ children }: Props) {

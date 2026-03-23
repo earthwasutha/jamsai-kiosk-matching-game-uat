@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import liff from "@line/liff";
-import Lottie from "react-lottie";
+import dynamic from "next/dynamic";
 import Image from "next/image";
 import animationData from "@/app/lottie/logo.json";
 import { useBoundStore } from "@/app/stores/useBoundStore";
@@ -10,6 +10,8 @@ import { checkLogin, login } from "@/app/services/bookFairService";
 import { LoginErrorModal } from "@/app/components/modals/LoginErrorModal";
 import { ConfirmEmailModal } from "@/app/components/modals/ConfirmEmailModal";
 import { Loading } from "./components/Loading";
+
+const Lottie = dynamic(() => import("react-lottie"), { ssr: false });
 
 interface confirmEmailData {
   email: string;
