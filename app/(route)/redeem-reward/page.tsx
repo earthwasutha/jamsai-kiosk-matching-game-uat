@@ -1,12 +1,12 @@
 "use client";
-import React, { useState, useEffect, lazy, Suspense } from "react";
+import React, { useState, useEffect } from "react";
 import * as services from "@/app/services/bookFairService";
 import { useBoundStore } from "../../stores/useBoundStore";
 import { useRouter } from "next/navigation";
+// import gift from "@/app/lottie/gift.json";
+// import Lottie from "react-lottie";
+import Lottie from "lottie-react";
 import gift from "@/app/lottie/gift.json";
-import dynamic from "next/dynamic";
-
-const Lottie = dynamic(() => import("react-lottie"), { ssr: false });
 type Props = {};
 
 // Default size
@@ -72,7 +72,9 @@ const page = (props: Props) => {
         <div onClick={() => setChoice(1)}>
           <Lottie
             width={"100%"}
-            options={defaultOptions}
+            animationData={gift}
+            loop={true}
+            autoplay={true}
             style={{
               cursor: "pointer",
               transition: "all",
@@ -98,7 +100,9 @@ const page = (props: Props) => {
         <div onClick={() => setChoice(2)}>
           <Lottie
             width={"100%"}
-            options={defaultOptions}
+            animationData={gift}
+            loop={true}
+            autoplay={true}
             style={{
               cursor: "pointer",
               transition: "all",
@@ -124,7 +128,9 @@ const page = (props: Props) => {
         <div onClick={() => setChoice(3)}>
           <Lottie
             width={"100%"}
-            options={defaultOptions}
+            animationData={gift}
+            loop={true}
+            autoplay={true}
             style={{
               cursor: "pointer",
               transition: "all",
@@ -162,4 +168,3 @@ const page = (props: Props) => {
 };
 
 export default page;
-
