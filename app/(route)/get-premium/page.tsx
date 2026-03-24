@@ -47,7 +47,16 @@ const page = (props: Props) => {
           </defs>
         </svg> */}
         {/* <Image src={reward?.image} alt={reward?.name} fill className="text-[#4D4D4D] font-bold text-4xl kiosk:text-7xl" /> */}
-        <Image src={reward?.image} alt={reward?.name} width={400} height={400} className="animate-scaleUpWin" />
+        {/* <Image src={reward?.image} alt={reward?.name} width={400} height={400} className="animate-scaleUpWin" /> */}
+        {reward?.image && (
+          <Image
+            src={reward.image}
+            alt={reward.name}
+            width={400}
+            height={400}
+            className="animate-scaleUpWin"
+          />
+        )}
         <div className="text-3xl animate-scaleUpWin">
           <p>คุณได้รับรางวัล {reward?.name}</p>
           <p>จำนวน 1 ชิ้น</p>
