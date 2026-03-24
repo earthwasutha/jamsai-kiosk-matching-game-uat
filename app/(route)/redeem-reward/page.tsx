@@ -1,10 +1,12 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, lazy, Suspense } from "react";
 import * as services from "@/app/services/bookFairService";
 import { useBoundStore } from "../../stores/useBoundStore";
 import { useRouter } from "next/navigation";
 import gift from "@/app/lottie/gift.json";
-import Lottie from "react-lottie";
+import dynamic from "next/dynamic";
+
+const Lottie = dynamic(() => import("react-lottie"), { ssr: false });
 type Props = {};
 
 // Default size
@@ -160,3 +162,4 @@ const page = (props: Props) => {
 };
 
 export default page;
+
