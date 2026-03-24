@@ -11,7 +11,7 @@ export const createUserSlice = (set) => ({
   isLoading: false,
   choice: 0,
   heart: 0,
-  reward: {},
+  reward: null,
   historyFlip: [],
   keyPattern: "",
   pattern: {},

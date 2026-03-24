@@ -16,15 +16,14 @@ const page = (props: Props) => {
     setMounted(true);
   }, []);
 
-  // ✅ ถ้า reward ไม่มีหลัง mount แล้ว ให้กลับหน้าแรก
+  // ✅ เช็ค object เปล่าด้วย
   useEffect(() => {
-    if (mounted && !reward) {
+    if (mounted && (!reward || Object.keys(reward).length === 0)) {
       router.replace("/");
     }
   }, [mounted, reward]);
 
-  // ✅ ยังไม่ mount ไม่ render อะไรทั้งนั้น
-  if (!mounted || !reward) return null;
+  if (!mounted || !reward || Object.keys(reward).length === 0) return null;
 
   const handleNavigate = (path: string) => {
     router.push(path);

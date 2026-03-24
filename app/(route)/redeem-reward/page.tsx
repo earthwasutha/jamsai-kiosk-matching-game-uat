@@ -16,6 +16,7 @@ const sizeSmallGiftBoxSelect = 130;
 const sizeSmallGiftBoxNonSelect = 100;
 const page = (props: Props) => {
   // const isSmallScreen = window?.screen?.width < 720;
+  const [mounted, setMounted] = useState(false)
   const [isSmallScreen, setIsSmallScreen] = useState(false);
   const router = useRouter();
   const [choice, setChoice] = useState<number>(0);
@@ -23,6 +24,12 @@ const page = (props: Props) => {
   const { gameResult, setIsLoading, setHeart, setReward, profile } = useBoundStore(
     (state) => state
   );
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) return null;
   const defaultOptions = {
     autoplay: true,
     loop: true,
