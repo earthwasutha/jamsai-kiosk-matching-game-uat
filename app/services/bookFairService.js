@@ -177,14 +177,18 @@ export const randomReward = async (deviceType, choice, scoreId, profile) => {
     const url =
       process.env.NEXT_PUBLIC_API_URL +
       `/random-reward?device_type=${deviceType}`;
-    const body = {
-      choice_no: choice,
-      score_id: scoreId,
-      profile: profile
+    const response = await instance.post(url, body);
+    const responseData = response.data?.result || response.data?.data || response.data;
+
+    return {
+      data: responseData,
+      isSuccess: response.data?.isSuccess !== false
     };
-    return (await instance.post(url, body)).data;
   } catch (error) {
-    return error.response.data;
+    return {
+      data: null,
+      isSuccess: false
+    };
   }
 };
 
