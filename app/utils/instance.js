@@ -32,15 +32,15 @@ const instance = axios.create({
   baseURL: process.env.NEXT_PUBLIC_API_URL,
 });
 
-instance.interceptors.request.use(
-  (config) => {
-    if (config?.data) {
-      config.data = { encrypted: encryptData(config.data) };
-    }
-    return config;
-  },
-  (error) => Promise.reject(error)
-);
+// instance.interceptors.request.use(
+//   (config) => {
+//     if (config?.data) {
+//       config.data = { encrypted: encryptData(config.data) };
+//     }
+//     return config;
+//   },
+//   (error) => Promise.reject(error)
+// );
 
 instance.interceptors.response.use(
   (config) => {
