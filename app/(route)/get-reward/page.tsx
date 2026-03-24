@@ -1,21 +1,13 @@
 "use client";
 import { useBoundStore } from "@/app/stores/useBoundStore";
 import { useRouter } from "next/navigation";
-import React, { useState, useEffect } from "react";
+import React, { use, useEffect } from "react";
 
 type Props = {};
 
 const page = (props: Props) => {
   const { setProfile, heart, setHeart } = useBoundStore((state) => state);
   const router = useRouter();
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-
-  if (!mounted) return null;
 
   const handleNavigate = (path: string) => {
     router.push(path);

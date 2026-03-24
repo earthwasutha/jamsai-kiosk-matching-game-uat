@@ -1,15 +1,6 @@
 import { create } from "zustand";
-import { persist } from "zustand/middleware";
 import { createUserSlice } from "./slices/createUserSlice";
 
-export const useBoundStore = create(
-  persist(
-    (...a) => ({
-      ...createUserSlice(...a),
-    }),
-    {
-      name: "store",
-      skipHydration: true,
-    }
-  )
-);
+export const useBoundStore = create((...a) => ({
+  ...createUserSlice(...a),
+}));

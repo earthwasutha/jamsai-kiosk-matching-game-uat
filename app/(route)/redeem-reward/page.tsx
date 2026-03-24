@@ -1,12 +1,10 @@
 "use client";
-import React, { useState, useEffect, lazy, Suspense } from "react";
+import React, { useState, useEffect } from "react";
 import * as services from "@/app/services/bookFairService";
 import { useBoundStore } from "../../stores/useBoundStore";
 import { useRouter } from "next/navigation";
 import gift from "@/app/lottie/gift.json";
-import dynamic from "next/dynamic";
-
-const Lottie = dynamic(() => import("react-lottie"), { ssr: false });
+import Lottie from "react-lottie";
 type Props = {};
 
 // Default size
@@ -16,7 +14,6 @@ const sizeSmallGiftBoxSelect = 130;
 const sizeSmallGiftBoxNonSelect = 100;
 const page = (props: Props) => {
   // const isSmallScreen = window?.screen?.width < 720;
-  const [mounted, setMounted] = useState(false)
   const [isSmallScreen, setIsSmallScreen] = useState(false);
   const router = useRouter();
   const [choice, setChoice] = useState<number>(0);
@@ -24,12 +21,6 @@ const page = (props: Props) => {
   const { gameResult, setIsLoading, setHeart, setReward, profile } = useBoundStore(
     (state) => state
   );
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) return null;
   const defaultOptions = {
     autoplay: true,
     loop: true,
@@ -46,11 +37,6 @@ const page = (props: Props) => {
   const handleSubmit = async () => {
     if (choice == 0) {
       alert("คุณยังไม่ได้เลือก reward");
-      return;
-    }
-    if (!gameResult?.score_id) {
-      alert("ไม่พบข้อมูลเกม กรุณาเล่นใหม่");
-      router.replace("/");
       return;
     }
     setIsLoading(true);

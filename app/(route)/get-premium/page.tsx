@@ -1,7 +1,7 @@
 "use client";
 import { useBoundStore } from "@/app/stores/useBoundStore";
 import { useRouter } from "next/navigation";
-import React, { useState, useEffect } from "react";
+import React, { use, useEffect } from "react";
 import Image from "next/image";
 
 type Props = {};
@@ -9,21 +9,6 @@ type Props = {};
 const page = (props: Props) => {
   const { setProfile, heart, setHeart, reward } = useBoundStore((state) => state);
   const router = useRouter();
-  const [mounted, setMounted] = useState(false);
-
-  // ✅ ป้องกัน hydration mismatch
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  // ✅ เช็ค object เปล่าด้วย
-  useEffect(() => {
-    if (mounted && (!reward || Object.keys(reward).length === 0)) {
-      router.replace("/");
-    }
-  }, [mounted, reward]);
-
-  if (!mounted || !reward || Object.keys(reward).length === 0) return null;
 
   const handleNavigate = (path: string) => {
     router.push(path);
