@@ -1,11 +1,20 @@
 import axios from "axios";
-const crypto = require("crypto");
+
+let crypto;
+if (typeof window === "undefined") {
+  try {
+    crypto = require("crypto");
+  } catch (e) {
+    crypto = undefined;
+  }
+}
 
 const algorithm = process.env.NEXT_PUBLIC_CRYPTO_ALGORITHM;
 const key = process.env.NEXT_PUBLIC_CRYPTO_KEY;
 const iv = process.env.NEXT_PUBLIC_CRYPTO_IV;
 
 const encryptData = (data) => {
+  if (!crypto || !algorithm || !key || !iv) return data;
   const jsonString = JSON.stringify(data);
   const cipher = crypto.createCipheriv(
     algorithm,
@@ -18,6 +27,7 @@ const encryptData = (data) => {
 };
 
 const decryptData = (encrypted) => {
+  if (!crypto || !algorithm || !key || !iv) return encrypted;
   const decipher = crypto.createDecipheriv(
     algorithm,
     Buffer.from(key, "hex"),
@@ -44,10 +54,12 @@ const instance = axios.create({
 
 instance.interceptors.response.use(
   (config) => {
-    if (config.data?.result?.encrypted) {
-      config.data.result = decryptData(config.data?.result?.encrypted);
-    } else if (config.data?.data?.encrypted) {
-      config.data.data = decryptData(config.data?.data?.encrypted);
+    if (crypto) {
+      if (config.data?.result?.encrypted) {
+        config.data.result = decryptData(config.data?.result?.encrypted);
+      } else if (config.data?.data?.encrypted) {
+        config.data.data = decryptData(config.data?.data?.encrypted);
+      }
     }
 
     return Promise.resolve(config);

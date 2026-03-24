@@ -16,20 +16,26 @@ export default function ReadyToPlay() {
   );
   const onCountdownFinish = async () => {
     setShowCountdown(false);
-    const { isSuccess, data, key } = await getGamePattern();
-    if (!isSuccess) {
+    try {
+      const { isSuccess, data, key } = await getGamePattern();
+      if (!isSuccess || !Array.isArray(data)) {
+        console.warn("getGamePattern returned no data or failed", { isSuccess, data });
+        return;
+      }
+
+      const newPattern: { id: number; matched: boolean; value: string }[] = [];
+      data.forEach((e: number, index: number) => {
+        newPattern.push({ id: index + 1, matched: false, value: e.toString() });
+      });
+
+      clearHistoryFlip();
+      setKeyPattern(key);
+      setPattern(newPattern);
+      router.push("/play");
+    } catch (error) {
+      console.error("Error fetching game pattern", error);
       return;
     }
-
-    var newPattern: { id: number; matched: boolean; value: string }[] = [];
-    data.forEach((e: number, index: number) => {
-      newPattern.push({ id: index + 1, matched: false, value: e.toString() });
-    });
-
-    clearHistoryFlip();
-    setKeyPattern(key);
-    setPattern(newPattern);
-    router.push("/play");
   };
 
   const defaultOptions = {
