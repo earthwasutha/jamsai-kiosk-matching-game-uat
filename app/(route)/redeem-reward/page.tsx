@@ -5,7 +5,12 @@ import { useBoundStore } from "../../stores/useBoundStore";
 import { useRouter } from "next/navigation";
 // import gift from "@/app/lottie/gift.json";
 // import Lottie from "react-lottie";
-import Lottie from "lottie-react";
+import dynamic from "next/dynamic";
+
+const Lottie = dynamic(() => import("lottie-react"), {
+  ssr: false,
+});
+
 import gift from "@/app/lottie/gift.json";
 type Props = {};
 
