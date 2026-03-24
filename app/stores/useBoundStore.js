@@ -8,7 +8,7 @@ export const useBoundStore = create(
       ...createUserSlice(...a),
     }),
     {
-      name: "bound-store",
+      name: "store",
       skipHydration: true,
     }
   )
