@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Kanit } from "next/font/google";
 import "./globals.css";
+import { StoreHydration } from "@/app/components/StoreHydration"; // ✅ เพิ่ม
 
 const kanit = Kanit({
   subsets: ["latin"],
@@ -9,26 +10,17 @@ const kanit = Kanit({
 });
 
 export const metadata: Metadata = {
-  icons: [
-    {
-      rel: "icon",
-      href: "/images/jamsai.png",
-      url: "",
-    },
-  ],
+  icons: [{ rel: "icon", href: "/images/jamsai.png", url: "" }],
   title: "Jamsai Book Theater 2025",
   description: "",
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
       <head>
-        {/* <link rel="preload" href="/images/logo.png" as="image" /> */}
         <link rel="preload" href="/images/logo.webp" as="image" />
         <link rel="preload" href="/images/50-Hearts.webp" as="image" />
         <link rel="preload" href="/images/100-Hearts.webp" as="image" />
@@ -47,11 +39,12 @@ export default function RootLayout({
         <link rel="preload" href="/images/cards/5.webp" as="image" />
         <link rel="preload" href="/images/cards/6.webp" as="image" />
         <link rel="icon" type="image/svg+xml" href="/images/jamsai.png" />
-        <meta name="mobile-web-app-capable" content="yes"></meta>
+        <meta name="mobile-web-app-capable" content="yes" />
       </head>
       <body className={`${kanit.className} antialiased`}>
+        <StoreHydration />
         <div className="flex justify-center w-full overflow-x-hidden bg-black">
-          <div className={`w-full overflow-x-hidden bg-white max-w-3xl`}>
+          <div className="w-full overflow-x-hidden bg-white max-w-3xl">
             {children}
           </div>
         </div>

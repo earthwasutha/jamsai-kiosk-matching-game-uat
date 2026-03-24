@@ -41,6 +41,11 @@ const page = (props: Props) => {
       alert("คุณยังไม่ได้เลือก reward");
       return;
     }
+    if (!gameResult?.score_id) {
+      alert("ไม่พบข้อมูลเกม กรุณาเล่นใหม่");
+      router.replace("/");
+      return;
+    }
     setIsLoading(true);
     const { data, isSuccess } = await services.randomReward(
       device,
