@@ -69,7 +69,7 @@ const page = (props: Props) => {
           <div>เวลาที่รอคอยมาถึงแล้ว!</div>
           <div>ลุ้นรางวัลกันเลย เลือกรับรางวัลได้ 1 กล่อง</div>
         </section>
-        <section className="text-lg kiosk:text-3xl font-normal text-[#F06624]">
+        <section className="text-lg kiosk:text-3xl font-normal text-[#fff]">
           * ร่วมสนุกรับรางวัลได้วันละ 1 ครั้ง/ช่องทาง *
         </section>
       </section>
