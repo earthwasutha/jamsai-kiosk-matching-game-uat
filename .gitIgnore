@@ -2,7 +2,7 @@ node_modules
 .DS_Store
 .next/
 # .*.env
-# .env
+.env
 public/sw.js.map
 public/sw.js
 public/sw.js

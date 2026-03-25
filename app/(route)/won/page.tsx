@@ -18,7 +18,7 @@ const page = ({ }: Props) => {
     <section className="">
       <section className="flex flex-col justify-center items-center text-center text-black gap-2 pt-20 kiosk:pt-52 animate-scaleUpWin">
         <section>
-          <div className="text-5xl kiosk:text-7xl font-bold text-orange-500">ชนะแล้ว!!</div>
+          <div className="text-5xl kiosk:text-7xl font-bold text-[#fff]">ชนะแล้ว!!</div>
           <div className="text-5xl kiosk:text-7xl whitespace-nowrap text-white">
             สุดยอดไปเลย
           </div>

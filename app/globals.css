@@ -3,35 +3,35 @@
 @tailwind utilities;
 
 .login-container {
-  background-image: url("/images/BG-Home1.webp");
+  background-image: url("/images/MatchAndWin.webp");
   background-size: cover;
   background-position: center bottom;
   background-repeat: no-repeat;
 }
 
 .heart-reward-container {
-  background-image: url("/images/BG-Home2.webp");
+  background-image: url("/images/MatchAndWin.webp");
   background-size: cover;
   background-position: center bottom;
   background-repeat: no-repeat;
 }
 
 .ready-to-play-container {
-  background-image: url("/images/BG-Home1.webp");
+  background-image: url("/images/MatchAndWin.webp");
   background-size: cover;
   background-position: center bottom;
   background-repeat: no-repeat;
 }
 
 .dashboard-container {
-  background-image: url("/images/BG-Home1.webp");
+  background-image: url("/images/MatchAndWin.webp");
   background-size: cover;
   background-position: center bottom;
   background-repeat: no-repeat;
 }
 
 .play-container {
-  background-image: url("/images/BG-Home2.webp");
+  background-image: url("/images/MatchAndWin.webp");
   background-size: cover;
   background-position: center bottom;
   background-repeat: no-repeat;
